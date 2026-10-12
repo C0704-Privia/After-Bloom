@@ -76,7 +76,11 @@ function Header() {
 
         <nav className="hidden items-center gap-9 text-sm font-medium tracking-[0.12em] text-muted md:flex">
           {navItems.map((item) => (
-            <a key={item} href="#" className="transition-opacity hover:opacity-70">
+            <a
+              key={item}
+              href={item === "Shop" ? "/shop" : "#"}
+              className="transition-opacity hover:opacity-70"
+            >
               {item}
             </a>
           ))}
