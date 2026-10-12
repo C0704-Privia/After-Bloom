@@ -68,13 +68,13 @@ function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#d7d2ca] bg-[#f7f2ea]/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-line bg-background/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
-        <a href="#" className="text-lg font-medium tracking-[0.28em] text-[#1b2d2c] uppercase">
+        <a href="#" className="text-lg font-medium tracking-[0.28em] text-foreground uppercase">
           After Bloom
         </a>
 
-        <nav className="hidden items-center gap-9 text-sm font-medium tracking-[0.12em] text-[#23413f] md:flex">
+        <nav className="hidden items-center gap-9 text-sm font-medium tracking-[0.12em] text-muted md:flex">
           {navItems.map((item) => (
             <a key={item} href="#" className="transition-opacity hover:opacity-70">
               {item}
@@ -86,7 +86,7 @@ function Header() {
           <button
             type="button"
             aria-label="Shopping cart"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#d7d2ca] bg-white/40 text-[#1b2d2c] transition-colors hover:bg-white"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-panel/40 text-foreground transition-colors hover:bg-panel"
           >
             <CartIcon />
           </button>
@@ -95,7 +95,7 @@ function Header() {
             type="button"
             aria-label="Toggle menu"
             onClick={() => setMenuOpen((open) => !open)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#d7d2ca] bg-white/40 text-[#1b2d2c] md:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-line bg-panel/40 text-foreground md:hidden"
           >
             <MenuIcon />
           </button>
@@ -103,8 +103,8 @@ function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t border-[#d7d2ca] bg-[#f7f2ea] px-5 py-4 md:hidden">
-          <div className="flex flex-col gap-4 text-sm font-medium tracking-[0.12em] text-[#23413f] uppercase">
+        <nav className="border-t border-line bg-background px-5 py-4 md:hidden">
+          <div className="flex flex-col gap-4 text-sm font-medium tracking-[0.12em] text-muted uppercase">
             {navItems.map((item) => (
               <a key={item} href="#" className="py-1">
                 {item}
@@ -122,59 +122,59 @@ function Hero() {
     <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
       <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
         <div className="max-w-xl">
-          <p className="mb-5 text-xs font-medium uppercase tracking-[0.28em] text-[#567a79]">
+          <p className="mb-5 text-xs font-medium uppercase tracking-[0.28em] text-muted">
             Premium Vietnamese roasts
           </p>
-          <h1 className="max-w-lg text-4xl font-semibold tracking-[-0.06em] text-[#1d2a2b] sm:text-5xl lg:text-7xl">
+          <h1 className="max-w-lg text-4xl font-semibold tracking-[-0.06em] text-foreground sm:text-5xl lg:text-7xl">
             Start your day after the bloom.
           </h1>
-          <p className="mt-6 max-w-lg text-base leading-7 text-[#4a5d5f] sm:text-lg">
+          <p className="mt-6 max-w-lg text-base leading-7 text-muted sm:text-lg">
             Freshly roasted Vietnamese coffee for focused mornings and productive workdays — intentionally sourced, carefully brewed, and designed for the rhythm of modern life.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
               href="#featured"
-              className="inline-flex items-center justify-center rounded-full bg-[#1d4f4c] px-6 py-3 text-sm font-medium tracking-[0.12em] text-[#f5f1eb] uppercase transition-opacity hover:opacity-90"
+              className="inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-sm font-medium tracking-[0.12em] text-panel uppercase transition-opacity hover:opacity-90"
             >
               Shop Coffee
             </a>
             <a
               href="#story"
-              className="inline-flex items-center justify-center rounded-full border border-[#c8d1d0] bg-white/50 px-6 py-3 text-sm font-medium tracking-[0.12em] text-[#1d2a2b] uppercase transition-colors hover:bg-white"
+              className="inline-flex items-center justify-center rounded-full border border-line bg-panel/50 px-6 py-3 text-sm font-medium tracking-[0.12em] text-foreground uppercase transition-colors hover:bg-panel"
             >
               Our Story
             </a>
           </div>
 
-          <div className="mt-10 grid gap-5 border-t border-[#d7d2ca] pt-6 sm:grid-cols-3">
+          <div className="mt-10 grid gap-5 border-t border-line pt-6 sm:grid-cols-3">
             <div>
-              <p className="text-2xl font-semibold text-[#1d2a2b]">4.9/5</p>
-              <p className="mt-1 text-sm text-[#647678]">Average rating</p>
+              <p className="text-2xl font-semibold text-foreground">4.9/5</p>
+              <p className="mt-1 text-sm text-muted">Average rating</p>
             </div>
             <div>
-              <p className="text-2xl font-semibold text-[#1d2a2b]">8–12</p>
-              <p className="mt-1 text-sm text-[#647678]">Days roasted</p>
+              <p className="text-2xl font-semibold text-foreground">8–12</p>
+              <p className="mt-1 text-sm text-muted">Days roasted</p>
             </div>
             <div>
-              <p className="text-2xl font-semibold text-[#1d2a2b]">100%</p>
-              <p className="mt-1 text-sm text-[#647678]">Vietnam origin</p>
+              <p className="text-2xl font-semibold text-foreground">100%</p>
+              <p className="mt-1 text-sm text-muted">Vietnam origin</p>
             </div>
           </div>
         </div>
 
         <div className="relative">
-          <div className="overflow-hidden rounded-[2rem] bg-[#dfe7e6] shadow-[0_30px_80px_rgba(22,45,48,0.12)]">
+          <div className="overflow-hidden rounded-[2rem] bg-brand-soft shadow-[0_30px_80px_rgba(23,42,43,0.12)]">
             <img
               src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80"
               alt="Freshly roasted premium Vietnamese coffee beans and coffee brewing setup"
               className="h-[560px] w-full object-cover"
             />
           </div>
-          <div className="absolute -bottom-6 left-6 rounded-2xl border border-[#dfe7e6] bg-[#f7f2ea]/90 p-4 shadow-lg backdrop-blur-sm sm:left-10">
-            <p className="text-[0.65rem] font-medium uppercase tracking-[0.22em] text-[#5d7d7b]">Featured single origin</p>
-            <p className="mt-2 text-xl font-medium text-[#1d2a2b]">Da Lat Reserve</p>
-            <p className="mt-1 text-sm text-[#4a5d5f]">Citrus • Cocoa • Floral</p>
+          <div className="absolute -bottom-6 left-6 rounded-2xl border border-brand-soft bg-background/90 p-4 shadow-lg backdrop-blur-sm sm:left-10">
+            <p className="text-[0.65rem] font-medium uppercase tracking-[0.22em] text-muted">Featured single origin</p>
+            <p className="mt-2 text-xl font-medium text-foreground">Da Lat Reserve</p>
+            <p className="mt-1 text-sm text-muted">Citrus • Cocoa • Floral</p>
           </div>
         </div>
       </div>
@@ -187,20 +187,20 @@ function FeaturedCoffee() {
     <section id="featured" className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
       <div className="mb-10 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#567a79]">Our collection</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-[#1d2a2b] sm:text-4xl">
+          <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted">Our collection</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
             Coffee for the way you work.
           </h2>
         </div>
-        <a href="#" className="text-sm font-medium uppercase tracking-[0.18em] text-[#1d4f4c]">
+        <a href="#" className="text-sm font-medium uppercase tracking-[0.18em] text-brand">
           View all coffees
         </a>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-3">
         {featuredCoffees.map((coffee) => (
-          <article key={coffee.name} className="group overflow-hidden rounded-[1.75rem] border border-[#dfe2df] bg-[#fbf8f3] p-3 shadow-[0_18px_40px_rgba(32,48,50,0.04)]">
-            <div className="overflow-hidden rounded-[1.4rem] bg-[#dde7e5]">
+          <article key={coffee.name} className="group overflow-hidden rounded-[1.75rem] border border-line bg-panel p-3 shadow-[0_18px_40px_rgba(23,42,43,0.04)]">
+            <div className="overflow-hidden rounded-[1.4rem] bg-brand-soft">
               <img
                 src={coffee.image}
                 alt={coffee.name}
@@ -209,15 +209,15 @@ function FeaturedCoffee() {
             </div>
             <div className="px-2 pb-2 pt-5">
               <div className="mb-3 flex items-center justify-between gap-3">
-                <h3 className="text-2xl font-medium text-[#1d2a2b]">{coffee.name}</h3>
-                <span className="text-sm text-[#5e7a78]">{coffee.price}</span>
+                <h3 className="text-2xl font-medium text-foreground">{coffee.name}</h3>
+                <span className="text-sm text-muted">{coffee.price}</span>
               </div>
-              <p className="text-base leading-7 text-[#4d5d5f]">{coffee.description}</p>
-              <div className="mt-5 flex items-center justify-between gap-4 border-t border-[#e4dfd7] pt-4">
-                <span className="text-xs font-medium uppercase tracking-[0.2em] text-[#5f7c7b]">{coffee.roast}</span>
+              <p className="text-base leading-7 text-muted">{coffee.description}</p>
+              <div className="mt-5 flex items-center justify-between gap-4 border-t border-line pt-4">
+                <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted">{coffee.roast}</span>
                 <button
                   type="button"
-                  className="inline-flex items-center justify-center rounded-full bg-[#1d2a2b] px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] text-[#f4f0ea] transition-opacity hover:opacity-90"
+                  className="inline-flex items-center justify-center rounded-full bg-brand px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] text-panel transition-opacity hover:opacity-90"
                 >
                   Add to cart
                 </button>
@@ -232,7 +232,7 @@ function FeaturedCoffee() {
 
 function BrandStory() {
   return (
-    <section id="story" className="bg-[#edf2f1] py-16 sm:py-20">
+    <section id="story" className="bg-brand-soft py-16 sm:py-20">
       <div className="mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-12 lg:px-12">
         <div className="grid gap-5 sm:grid-cols-[1.1fr_0.9fr]">
           <img
@@ -246,9 +246,9 @@ function BrandStory() {
               alt="Coffee beans and equipment in a clean premium kitchen"
               className="h-[200px] w-full rounded-[2rem] object-cover"
             />
-            <div className="rounded-[2rem] bg-[#f5f0ea] p-6">
-              <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#5c7c7c]">Since 2021</p>
-              <p className="mt-4 text-2xl font-medium tracking-[-0.04em] text-[#1d2a2b]">
+            <div className="rounded-[2rem] bg-panel p-6">
+              <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">Since 2021</p>
+              <p className="mt-4 text-2xl font-medium tracking-[-0.04em] text-foreground">
                 Coffee for intentional days.
               </p>
             </div>
@@ -256,14 +256,14 @@ function BrandStory() {
         </div>
 
         <div className="max-w-xl">
-          <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#567a79]">Our story</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-[#1d2a2b] sm:text-4xl">
+          <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted">Our story</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
             Thoughtful coffee for a more deliberate morning.
           </h2>
-          <p className="mt-6 text-base leading-8 text-[#4a5d5f]">
+          <p className="mt-6 text-base leading-8 text-muted">
             After Bloom began with a simple idea: great coffee should match the pace of the people who drink it. We source from Vietnamese growers with care, roast in small batches to highlight clarity and sweetness, and design every cup around focus, ritual, and presence.
           </p>
-          <p className="mt-5 text-base leading-8 text-[#4a5d5f]">
+          <p className="mt-5 text-base leading-8 text-muted">
             From the first sip to the final task of the day, we believe coffee should support not just energy, but better work, calmer mornings, and a life made with intention.
           </p>
         </div>
@@ -276,18 +276,18 @@ function Philosophy() {
   return (
     <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
       <div className="mb-10 max-w-2xl">
-        <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#567a79]">Coffee philosophy</p>
-        <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-[#1d2a2b] sm:text-4xl">
+        <p className="text-xs font-medium uppercase tracking-[0.28em] text-muted">Coffee philosophy</p>
+        <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-foreground sm:text-4xl">
           Built around the rituals that shape your day.
         </h2>
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
         {principles.map((principle, index) => (
-          <div key={principle.title} className="rounded-[2rem] border border-[#dfe2df] bg-[#fbf8f3] p-8">
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#5a7e7a]">0{index + 1}</p>
-            <h3 className="mt-4 text-2xl font-medium tracking-[-0.04em] text-[#1d2a2b]">{principle.title}</h3>
-            <p className="mt-5 text-base leading-7 text-[#4a5d5f]">{principle.description}</p>
+          <div key={principle.title} className="rounded-[2rem] border border-line bg-panel p-8">
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">0{index + 1}</p>
+            <h3 className="mt-4 text-2xl font-medium tracking-[-0.04em] text-foreground">{principle.title}</h3>
+            <p className="mt-5 text-base leading-7 text-muted">{principle.description}</p>
           </div>
         ))}
       </div>
@@ -298,11 +298,11 @@ function Philosophy() {
 function Newsletter() {
   return (
     <section className="mx-auto max-w-7xl px-5 pb-20 pt-4 sm:px-8 lg:px-12">
-      <div className="rounded-[2.2rem] bg-[#1d4f4c] px-6 py-10 text-[#f5f1eb] sm:px-8 lg:px-12 lg:py-14">
+      <div className="rounded-[2.2rem] bg-brand px-6 py-10 text-panel sm:px-8 lg:px-12 lg:py-14">
         <div className="grid items-center gap-8 lg:grid-cols-[1fr_0.9fr]">
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#cfe0dd]">Stay in the loop</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-[#f5f1eb] sm:text-4xl">
+            <p className="text-xs font-medium uppercase tracking-[0.28em] text-panel/80">Stay in the loop</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.05em] text-panel sm:text-4xl">
               Discover new coffees and the stories behind them.
             </h2>
           </div>
@@ -315,11 +315,11 @@ function Newsletter() {
               id="email"
               type="email"
               placeholder="Email address"
-              className="h-14 flex-1 rounded-full border border-[#b9d0ce] bg-[#f5f1eb] px-5 text-base text-[#1d2a2b] placeholder:text-[#738180] outline-none focus:border-[#d9e6e4]"
+              className="h-14 flex-1 rounded-full border border-line bg-panel px-5 text-base text-foreground placeholder:text-muted outline-none focus:border-panel"
             />
             <button
               type="submit"
-              className="h-14 rounded-full bg-[#f5f1eb] px-6 text-sm font-medium uppercase tracking-[0.18em] text-[#1d4f4c] transition-opacity hover:opacity-90"
+              className="h-14 rounded-full bg-panel px-6 text-sm font-medium uppercase tracking-[0.18em] text-brand transition-opacity hover:opacity-90"
             >
               Subscribe
             </button>
@@ -332,18 +332,18 @@ function Newsletter() {
 
 function Footer() {
   return (
-    <footer className="border-t border-[#d7d2ca] bg-[#f7f2ea]">
+    <footer className="border-t border-line bg-background">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[1.3fr_0.8fr_0.8fr_0.8fr] lg:px-12">
         <div>
-          <p className="text-xl font-medium tracking-[0.24em] text-[#1d2a2b] uppercase">After Bloom</p>
-          <p className="mt-4 max-w-xs text-base leading-7 text-[#4a5d5f]">
+          <p className="text-xl font-medium tracking-[0.24em] text-foreground uppercase">After Bloom</p>
+          <p className="mt-4 max-w-xs text-base leading-7 text-muted">
             Premium Vietnamese coffee for focused mornings and inspired workdays.
           </p>
         </div>
 
         <div>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#5a7a78]">Navigation</p>
-          <ul className="mt-4 space-y-3 text-base text-[#334748]">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">Navigation</p>
+          <ul className="mt-4 space-y-3 text-base text-foreground">
             <li><a href="#">Shop</a></li>
             <li><a href="#">Our Coffee</a></li>
             <li><a href="#">About</a></li>
@@ -352,8 +352,8 @@ function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#5a7a78]">Contact</p>
-          <ul className="mt-4 space-y-3 text-base text-[#334748]">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">Contact</p>
+          <ul className="mt-4 space-y-3 text-base text-foreground">
             <li><a href="mailto:hello@afterbloom.coffee">hello@afterbloom.coffee</a></li>
             <li><a href="tel:+84912345678">+84 (0) 912 345 678</a></li>
             <li>Ho Chi Minh City</li>
@@ -361,13 +361,13 @@ function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#5a7a78]">Instagram</p>
-          <p className="mt-4 text-base text-[#334748]">@afterbloom.coffee</p>
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">Instagram</p>
+          <p className="mt-4 text-base text-foreground">@afterbloom.coffee</p>
         </div>
       </div>
 
-      <div className="border-t border-[#d7d2ca]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-5 text-sm text-[#51686a] sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12">
+      <div className="border-t border-line">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-5 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-12">
           <p>© 2026 After Bloom. All rights reserved.</p>
           <p>Roasted with care in Vietnam.</p>
         </div>
@@ -378,7 +378,7 @@ function Footer() {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#f7f2ea] text-[#1d2a2b]">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
       <main>
         <Hero />
