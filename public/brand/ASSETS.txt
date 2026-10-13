@@ -1,0 +1,12 @@
+Coffee photograph: https://images.unsplash.com/photo-1442512595331-e89e73853f31 — illustrative brewing photo, not a claim of After Bloom premises.
+Fonts: Manrope and Montserrat, downloaded from Google Fonts.
+Product SVGs: editable website packaging illustrations, not production photography or print masters. Logo rendering is an implementation concept pending the approved vector master.
+Product collection: Brand Identity v1.1. Prices confirmed by owner: 150000 + 20000 per product in guideline order. 500 g follows the reference examples and existing product convention; confirm before launch.
+Checkout saves device-local drafts only; no payment or order transmission is implemented.
+Hero coffee-at-work.png: generated with built-in ImageGen on 2026-10-12. Brief: Vietnamese working professional with laptop and ivory coffee cup, oak desk, forest teal and ivory workspace, natural light, quiet left side for headline; no text or logos. Editorial illustration, not a photograph of actual After Bloom staff or premises.
+
+V3: coffee-at-work-v3.png and public/products/*-v3.png generated with built-in ImageGen using the supplied After Bloom logo. Concept mockups. Prompts archived in Guideline/After-Bloom-Images-v3-Brief.txt. Previous image files retained.
+
+V4 (2026-10-13): coffee-at-work-v4.png and products/*-v4.png. Built-in ImageGen using user Cover and SKU references. Smooth minimal coffee pouch concepts; prompts in Guideline/After-Bloom-Images-v4-Brief.txt.
+
+V5 (2026-10-13): coffee-commute-v5.webp is the user-approved ImageGen cycling cover (Asian male rear view, teal messenger bag, smaller cream coffee pouch, relaxed daylight). coffee-ritual-v5.webp generated using the existing Focus Blend packaging as reference: bright home coffee preparation with beans and manual grinder. Editorial concept imagery. Original images retained; WebP copies optimized for delivery.

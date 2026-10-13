@@ -1,0 +1,2 @@
+export function BrandMark() { return <svg viewBox="0 0 90 90" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M44 12v66M20 29c14-8 24 7 24 21M44 24c46-4 47 57 18 57-11 0-17-13-18-22"/><circle cx="25" cy="60" r="20"/></svg>; }
+export default function Brand() { return <span className="brand-lockup"><span className="brand-symbol"><BrandMark /></span><span className="brand-name">after bloom</span><span className="brand-tagline">COFFEE FOR FOCUS</span></span>; }

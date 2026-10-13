@@ -1,272 +1,34 @@
 "use client";
-
 import Link from "next/link";
-import { useCart } from "@/lib/cart-context";
 import { useState } from "react";
-
-export default function CheckoutPage() {
-  const { items, subtotal, clearCart  } = useCart();
-  const [orderNumber, setOrderNumber] = useState("");
-  const [customer, setCustomer] = useState({
-  fullName: "",
-  phone: "",
-  email: "",
-  address: "",
-});
-
-const [orderPlaced, setOrderPlaced] = useState(false);
-  if (orderPlaced) {
-  return (
-    <main className="min-h-screen bg-background px-6 py-20">
-      <div className="mx-auto max-w-3xl">
-        <p className="text-sm uppercase tracking-[0.25em] text-muted">
-          After Bloom
-        </p>
-
-        <h1 className="mt-4 font-sans text-5xl leading-tight">
-          Thank You!
-        </h1>
-
-        <div className="mt-10 border-t border-line pt-8">
-          <p className="text-lg">
-            Your order has been received.
-          </p>
-
-          <p className="mt-3 text-sm">
-            Order number: <strong>{orderNumber}</strong>
-          </p>
-
-          <p className="mt-3 text-sm text-muted">
-            Thank you for choosing After Bloom.
-          </p>
-
-          <Link
-            href="/shop"
-            className="mt-8 inline-block bg-brand px-6 py-3 text-sm text-panel transition hover:bg-brand/90"
-          >
-            Continue Shopping
-          </Link>
-        </div>
-      </div>
-    </main>
-  );
+import { useCart } from "@/lib/cart-context";
+import { money } from "@/lib/products";
+export default function Checkout() {
+    const { items, subtotal, clearCart } = useCart();
+    const [saved, setSaved] = useState("");
+    const [error, setError] = useState("");
+    function save() { try {
+        const orderNumber = `AB-DRAFT-${Date.now()}`;
+        const raw: unknown = JSON.parse(localStorage.getItem("after-bloom-draft-orders") || "[]");
+        const orders = Array.isArray(raw) ? raw : [];
+        orders.push({ orderNumber, items, subtotal, status: "draft", createdAt: new Date().toISOString() });
+        localStorage.setItem("after-bloom-draft-orders", JSON.stringify(orders));
+        setSaved(orderNumber);
+        clearCart();
+    }
+    catch {
+        setError("Chưa thể lưu trên trình duyệt này. Vui lòng kiểm tra cài đặt lưu trữ và thử lại.");
+    } }
+    return <main id="main" className="section commerce-page"><p className="eyebrow">AFTER BLOOM · PREVIEW</p><h1>{saved ? "Đã lưu lựa chọn của bạn." : "Lưu một đơn tạm."}</h1>{saved ? <div className="empty-state"><p>Mã lưu: <strong>{saved}</strong></p><p>Đơn tạm chỉ được lưu trên trình duyệt này, chưa gửi đến cửa hàng và chưa phát sinh thanh toán.</p><Link className="button" href="/shop">Tiếp tục khám phá ↗</Link></div> : !items.length ? <div className="empty-state"><p>Giỏ hàng đang trống.</p><Link className="button" href="/shop">Chọn cà phê ↗</Link></div> : <div className="commerce-grid"><div className="checkout-explanation"><h2>Bộ sưu tập đang được hoàn thiện.</h2><p>Bạn có thể lưu lựa chọn để xem lại trong bản trải nghiệm. After Bloom chưa nhận đơn hoặc thanh toán qua website này.</p><p>Không cần cung cấp thông tin cá nhân ở bước này.</p><Link className="text-link" href="/cart">← Chỉnh sửa giỏ hàng</Link></div><aside className="order-summary"><h2>Lựa chọn của bạn</h2>{items.map(i => <div key={i.product.id}><span>{i.product.name} × {i.quantity}</span><span>{money(i.product.price * i.quantity)}</span></div>)}<div><strong>Tạm tính</strong><strong>{money(subtotal)}</strong></div><p className="small-note">Chưa bao gồm phí giao hàng.</p><button className="button" onClick={save}>Lưu đơn tạm trên thiết bị →</button>{error && <p role="alert">{error}</p>}</aside></div>}<DraftHistory /></main>;
 }
-  if (items.length === 0) {
-    return (
-      <main className="min-h-screen bg-background px-6 py-20">
-        <div className="mx-auto max-w-3xl">
-          <p className="mb-4 text-sm uppercase tracking-[0.25em] text-muted">
-            After Bloom
-          </p>
-
-          <h1 className="font-sans text-5xl leading-tight md:text-6xl">
-            Checkout
-          </h1>
-
-          <div className="mt-12 border-t border-line pt-8">
-            <p className="text-lg text-muted">
-              Your cart is empty.
-            </p>
-
-            <Link
-              href="/shop"
-              className="mt-6 inline-block bg-brand px-6 py-3 text-sm !text-white"
-            >
-              Continue Shopping
-            </Link>
-          </div>
-        </div>
-      </main>
-    );
-  }
-
-  return (
-    <main className="min-h-screen bg-background px-6 py-20">
-      <div className="mx-auto max-w-5xl">
-        <p className="mb-4 text-sm uppercase tracking-[0.25em] text-muted">
-          After Bloom
-        </p>
-
-        <h1 className="font-sans text-5xl leading-tight md:text-6xl">
-          Checkout
-        </h1>
-
-        <div className="mt-12 grid gap-12 md:grid-cols-[1fr_360px]">
-          {/* Customer Information */}
-          <form
-            id="checkout-form"
-            onSubmit={(e) => {
-              e.preventDefault();
-
-              const newOrderNumber = `AB-${Date.now()}`;
-
-              const order = {
-                orderNumber: newOrderNumber,
-                customer,
-                items,
-                subtotal,
-                createdAt: new Date().toISOString(),
-              };
-
-              try {
-                const savedOrders = JSON.parse(
-                  localStorage.getItem("after-bloom-orders") || "[]"
-                );
-
-                savedOrders.push(order);
-
-                localStorage.setItem(
-                  "after-bloom-orders",
-                  JSON.stringify(savedOrders)
-                );
-
-                setOrderNumber(newOrderNumber);
-                clearCart();
-                setOrderPlaced(true);
-              } catch {
-                alert("Unable to save your order. Please try again.");
-              }
-            }}
-         >
-            <h2 className="text-xl font-medium">
-              Customer Information
-            </h2>
-
-            <div className="mt-6 space-y-5">
-              <div>
-                <label className="mb-2 block text-sm">
-                  Full Name
-                </label>
-                
-<input
-  type="text"
-  className="w-full border border-line bg-transparent px-4 py-3 outline-none"
-  placeholder="Your name"
-  value={customer.fullName}
-  onChange={(e) =>
-    setCustomer({ ...customer, fullName: e.target.value })
-  }
-  required
-/>
-
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm">
-                  Phone
-                </label>
-
-                <input
-                  type="tel"
-                  className="w-full border border-line bg-transparent px-4 py-3 outline-none"
-                  placeholder="Your phone number"
-                  value={customer.phone}
-                  onChange={(e) =>
-                    setCustomer({ ...customer, phone: e.target.value })
-                  }
-                  required
-                />
-
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  className="w-full border border-line bg-transparent px-4 py-3 outline-none"
-                  placeholder="you@example.com"
-                  value={customer.email}
-                  onChange={(e) =>
-                    setCustomer({ ...customer, email: e.target.value })
-                  }
-                  required
-                />
-
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm">
-                  Delivery Address
-                </label>
-
-                <textarea
-                  rows={4}
-                  className="w-full border border-line bg-transparent px-4 py-3 outline-none"
-                  placeholder="Your delivery address"
-                  value={customer.address}
-                  onChange={(e) =>
-                    setCustomer({ ...customer, address: e.target.value })
-                  }
-                  required
-                />
-
-              </div>
-            </div>
-          </form>
-
-          {/* Order Summary */}
-          <aside className="border border-line p-6">
-            <h2 className="text-xl font-medium">
-              Order Summary
-            </h2>
-
-            <div className="mt-6 space-y-4">
-              {items.map((item) => (
-                <div
-                  key={item.product.id}
-                  className="flex justify-between gap-4 text-sm"
-                >
-                  <span>
-                    {item.product.name} × {item.quantity}
-                  </span>
-
-                  <span>
-                    {(item.product.price * item.quantity).toLocaleString(
-                      "vi-VN"
-                    )}
-                    ₫
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 border-t border-line pt-6">
-              <div className="flex justify-between">
-                <span>Subtotal</span>
-
-                <span>
-                  {subtotal.toLocaleString("vi-VN")} ₫
-                </span>
-              </div>
-
-              <div className="mt-4 flex justify-between">
-                <span>Shipping</span>
-                <span>Calculated later</span>
-              </div>
-
-              <div className="mt-6 border-t border-line pt-6">
-                <div className="flex justify-between text-lg">
-                  <span>Total</span>
-
-                  <span>
-                    {subtotal.toLocaleString("vi-VN")} ₫
-                  </span>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                form="checkout-form"
-                className="mt-6 w-full bg-brand px-6 py-4 text-sm text-panel transition hover:bg-brand/90"
-              >
-                Place Order
-              </button>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </main>
-  );
+function DraftHistory() { const [drafts, setDrafts] = useState<{
+    orderNumber: string;
+    subtotal: number;
+    createdAt: string;
+}[]>([]); const [opened, setOpened] = useState(false); return <section className="draft-history"><button className="text-link" aria-expanded={opened} onClick={() => { setOpened(!opened); try {
+    const data = JSON.parse(localStorage.getItem("after-bloom-draft-orders") || "[]");
+    setDrafts(Array.isArray(data) ? data.filter(d => typeof d.orderNumber === "string" && typeof d.subtotal === "number") : []);
 }
+catch {
+    setDrafts([]);
+} }}>{opened ? "Ẩn" : "Xem"} đơn tạm đã lưu {opened ? "−" : "+"}</button>{opened && <div>{drafts.length ? drafts.map(d => <p key={d.orderNumber}>{d.orderNumber} · {money(d.subtotal)}</p>) : <p>Chưa có đơn tạm nào trên thiết bị này.</p>}</div>}</section>; }
