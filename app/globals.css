@@ -1452,3 +1452,10 @@ html { scroll-padding-top: 164px; }
   .hero-bottom > span { max-width: 125px; }
   .purchase-row .button { flex-basis: 100%; }
 }
+
+/* Approved original logo lockup: preserve symbol, lettering and clear spacing. */
+.brand-artwork { display: block; width: 195px; height: auto; }
+.footer-bottom .brand-artwork { width: 180px; }
+@media (max-width: 900px) {
+  .site-header .brand-artwork { width: 124px; }
+}
