@@ -13,7 +13,7 @@ export const products: Product[] = [
     "composition": "100% ARABICA CẦU ĐẤT",
     "roast": "Vừa phát triển (M+)",
     "weight": "250 g",
-    "price": 92500,
+    "price": 93000,
     "category": "Arabica",
     "notes": "Nền vị thanh nhẹ, chua dịu, khép lại bằng dư vị nhẹ nhàng, dễ chịu.",
     "description": "Một khoảng riêng để chậm lại cùng hương Arabica từ cao nguyên Cầu Đất, Việt Nam. Thanh nhẹ và tinh tế, dành cho phút tĩnh tại để những ý tưởng mới mở ra.",
@@ -24,7 +24,7 @@ export const products: Product[] = [
       "500": "/products/labels/evening-wind-500.png"
     },
     "prices": {
-      "250": 92500,
+      "250": 93000,
       "500": 185000
     }
   },
@@ -57,7 +57,7 @@ export const products: Product[] = [
     "composition": "70% ARABICA · 30% ROBUSTA",
     "roast": "Vừa (M)",
     "weight": "250 g",
-    "price": 86500,
+    "price": 87000,
     "category": "Blend",
     "notes": "Vị đắng nhẹ hòa trong nền cà phê rõ nét, để lại hậu vị cân bằng ngay cả khi thưởng thức với đá.",
     "description": "Đón ngày mới bằng một cảm giác sảng khoái. Morning Light giữ nét thanh nhẹ cùng nền vị vừa đủ rõ; thêm chút đá để khoảnh khắc bắt đầu thêm tươi mới.",
@@ -68,7 +68,7 @@ export const products: Product[] = [
       "500": "/products/labels/morning-light-500.png"
     },
     "prices": {
-      "250": 86500,
+      "250": 87000,
       "500": 173000
     }
   },
@@ -101,7 +101,7 @@ export const products: Product[] = [
     "composition": "10% ARABICA · 90% ROBUSTA",
     "roast": "Vừa đậm (M+ đến MD)",
     "weight": "250 g",
-    "price": 68625,
+    "price": 69000,
     "category": "Blend",
     "notes": "Thân vị đầy, đắng rõ, kết lại bằng hậu vị sạch và dễ chịu. Nền cà phê đậm đà nổi bật qua vị béo ngọt của sữa và kem.",
     "description": "Dành cho người yêu gu cà phê Việt đậm rõ. Mạnh mẽ trong hương vị, Power Focus giữ chất cà phê làm điểm nhấn xuyên suốt từng ngụm.",
@@ -112,8 +112,8 @@ export const products: Product[] = [
       "500": "/products/labels/power-focus-500.png"
     },
     "prices": {
-      "250": 68625,
-      "500": 137250
+      "250": 69000,
+      "500": 138000
     }
   }
 ];
