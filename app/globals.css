@@ -1484,3 +1484,7 @@ html { scroll-padding-top: 164px; }
 @media(max-width:900px) { .site-header .brand-live-tagline { font-size:6.5px; letter-spacing:.14em; margin-top:5px; } }
 .pack-photo-brand { container-type:inline-size; }
 .pack-photo-brand .brand-live-tagline { font-size:5cqw; margin-top:4cqw; letter-spacing:.14em; }
+
+/* Preserve photo ratio without blank space below. */
+.detail-image .pack-photo-base,.detail-image .pack-photo-label img { max-height:none; }
+.detail-image .pack-photo { margin-bottom:0; }
