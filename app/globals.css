@@ -1499,12 +1499,6 @@ html { scroll-padding-top: 164px; }
 .brew-invitation { background:var(--brand); color:var(--background); padding:48px; }
 .brew-invitation h2 { margin:24px 0; }
 .brew-invitation .text-link { color:inherit; border-color:currentColor; }
-.recipe-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:40px 60px; }
-.recipe { border-top:1px solid var(--line); padding:30px 0; }
-.recipe h2 { font-size:36px; margin:20px 0; }
-.recipe-meta { color:var(--muted); }
-.recipe ol { padding-left:22px; margin:24px 0; }
-.recipe li { margin:12px 0; }
 .cart-pack { display:block; width:100%; }
 .cart-pack .pack-photo img { width:100%; height:auto; }
 .cart-pack .pack-photo-label img { height:139.6%; }
@@ -1526,13 +1520,12 @@ html { scroll-padding-top: 164px; }
 .checkout-line small { display:block; font-size:12px; margin-top:5px; }
 .button:disabled { opacity:.5; cursor:not-allowed; }
 @media(max-width:700px) {
- .recipe-grid,.checkout-fields { grid-template-columns:1fr; }
+ .checkout-fields { grid-template-columns:1fr; }
  .brew-invitation { padding:30px 24px; }
  .ritual-overview { gap:30px; }
  .grind-options label { min-height:44px; }
  .checkout-line { font-size:13px; }
  .cart-item>strong { grid-column:2; }
- .recipe h2 { font-size:30px; }
 }
 
 .guide-content .brew-invitation p { color:var(--background); }
