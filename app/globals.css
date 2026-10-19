@@ -1530,3 +1530,5 @@ html { scroll-padding-top: 164px; }
 
 .guide-content .brew-invitation p { color:var(--background); }
 .guide-content .brew-invitation .eyebrow { font-size:10px; }
+
+.story-image-notes img { object-position: left center; }
