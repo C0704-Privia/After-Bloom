@@ -1,34 +1,10 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
-import { useCart } from "@/lib/cart-context";
-import { money } from "@/lib/products";
+import {useState} from "react";
+import {useCart} from "@/lib/cart-context";
+import {money} from "@/lib/products";
 export default function Checkout() {
-    const { items, subtotal, clearCart } = useCart();
-    const [saved, setSaved] = useState("");
-    const [error, setError] = useState("");
-    function save() { try {
-        const orderNumber = `AB-DRAFT-${Date.now()}`;
-        const raw: unknown = JSON.parse(localStorage.getItem("after-bloom-draft-orders") || "[]");
-        const orders = Array.isArray(raw) ? raw : [];
-        orders.push({ orderNumber, items, subtotal, status: "draft", createdAt: new Date().toISOString() });
-        localStorage.setItem("after-bloom-draft-orders", JSON.stringify(orders));
-        setSaved(orderNumber);
-        clearCart();
-    }
-    catch {
-        setError("Chưa thể lưu trên trình duyệt này. Vui lòng kiểm tra cài đặt lưu trữ và thử lại.");
-    } }
-    return <main id="main" className="section commerce-page"><p className="eyebrow">AFTER BLOOM · PREVIEW</p><h1>{saved ? "Đã lưu lựa chọn của bạn." : "Lưu một đơn tạm."}</h1>{saved ? <div className="empty-state"><p>Mã lưu: <strong>{saved}</strong></p><p>Đơn tạm chỉ được lưu trên trình duyệt này, chưa gửi đến cửa hàng và chưa phát sinh thanh toán.</p><Link className="button" href="/shop">Tiếp tục khám phá ↗</Link></div> : !items.length ? <div className="empty-state"><p>Giỏ hàng đang trống.</p><Link className="button" href="/shop">Chọn cà phê ↗</Link></div> : <div className="commerce-grid"><div className="checkout-explanation"><h2>Bộ sưu tập đang được hoàn thiện.</h2><p>Bạn có thể lưu lựa chọn để xem lại trong bản trải nghiệm. After Bloom chưa nhận đơn hoặc thanh toán qua website này.</p><p>Không cần cung cấp thông tin cá nhân ở bước này.</p><Link className="text-link" href="/cart">← Chỉnh sửa giỏ hàng</Link></div><aside className="order-summary"><h2>Lựa chọn của bạn</h2>{items.map(i => <div key={i.product.id}><span>{i.product.name} × {i.quantity}</span><span>{money((i.product.price ?? 0) * i.quantity)}</span></div>)}<div><strong>Tạm tính</strong><strong>{money(subtotal)}</strong></div><p className="small-note">Chưa bao gồm phí giao hàng.</p><button className="button" onClick={save}>Lưu đơn tạm trên thiết bị →</button>{error && <p role="alert">{error}</p>}</aside></div>}<DraftHistory /></main>;
+ const {items,subtotal,ready}=useCart();
+ const [different,setDifferent]=useState(false);
+ return <main id="main" className="section commerce-page"><p className="eyebrow">AFTER BLOOM · CHECKOUT</p><h1>Thông tin đặt hàng.</h1><p className="checkout-notice" role="note">Bản xem trước: chưa tiếp nhận đơn hoặc thanh toán. Thông tin nhập ở đây chưa được gửi đến After Bloom.</p>{!ready ? <p role="status">Đang tải giỏ hàng…</p> : !items.length ? <div className="empty-state"><p>Giỏ hàng đang trống.</p><Link className="button" href="/shop">Tiếp tục mua hàng ↗</Link></div> : <form className="commerce-grid checkout-grid" onSubmit={e=>e.preventDefault()}><div><section className="checkout-block"><h2>Thông tin liên hệ</h2><p>Tiếp tục với tư cách khách.</p><div className="checkout-fields"><label>Họ và tên *<input name="name" autoComplete="name" required placeholder="Nhập họ và tên"/></label><label>Số điện thoại *<input name="phone" type="tel" autoComplete="tel" required placeholder="Nhập số điện thoại"/></label><label className="field-wide">Email<input name="email" type="email" autoComplete="email" placeholder="Địa chỉ email (không bắt buộc)"/></label></div></section><section className="checkout-block"><h2>Thông tin giao hàng</h2><label className="checkbox-label"><input type="checkbox" checked={different} onChange={e=>setDifferent(e.target.checked)}/>Giao cho người nhận khác</label><div className="checkout-fields">{different && <><label>Họ tên người nhận *<input name="recipient" autoComplete="shipping name" required/></label><label>Số điện thoại người nhận *<input name="recipientPhone" type="tel" autoComplete="shipping tel" required/></label></>}<label className="field-wide">Địa chỉ *<input name="address" autoComplete="shipping street-address" required placeholder="Số nhà, tên đường, tòa nhà…"/></label><label>Tỉnh / Thành phố *<input name="city" autoComplete="shipping address-level1" required placeholder="Tỉnh / Thành phố"/></label><label>Phường / Xã *<input name="ward" autoComplete="shipping address-level2" required placeholder="Phường / Xã"/></label><label className="field-wide">Ghi chú<textarea name="note" rows={3} placeholder="Ghi chú giao hàng hoặc yêu cầu về cách xay"/></label></div></section><Link className="text-link" href="/cart">← Chỉnh sửa giỏ hàng</Link></div><aside className="order-summary"><h2>Chi tiết đơn hàng</h2>{items.map(i=><div className="checkout-line" key={i.key}><span><strong>{i.product.name} × {i.quantity}</strong><small>{i.weight} g · {i.grind}</small></span><span>{money(i.unitPrice*i.quantity)}</span></div>)}<div><span>Tạm tính</span><strong>{money(subtotal)}</strong></div><div><span>Giảm giá</span><span>{money(0)}</span></div><div><span>Phí vận chuyển</span><span>Sẽ xác nhận</span></div><div className="summary-total"><strong>Tổng tiền sản phẩm</strong><strong>{money(subtotal)}</strong></div><p className="small-note">Chưa bao gồm phí vận chuyển. Thanh toán QR sẽ được mở sau khi hoàn tất kết nối.</p><button className="button" type="submit" disabled>Đặt hàng · Sắp mở</button><Link className="text-link" href="/shop">Tiếp tục mua hàng ↗</Link></aside></form>}</main>;
 }
-function DraftHistory() { const [drafts, setDrafts] = useState<{
-    orderNumber: string;
-    subtotal: number;
-    createdAt: string;
-}[]>([]); const [opened, setOpened] = useState(false); return <section className="draft-history"><button className="text-link" aria-expanded={opened} onClick={() => { setOpened(!opened); try {
-    const data = JSON.parse(localStorage.getItem("after-bloom-draft-orders") || "[]");
-    setDrafts(Array.isArray(data) ? data.filter(d => typeof d.orderNumber === "string" && typeof d.subtotal === "number") : []);
-}
-catch {
-    setDrafts([]);
-} }}>{opened ? "Ẩn" : "Xem"} đơn tạm đã lưu {opened ? "−" : "+"}</button>{opened && <div>{drafts.length ? drafts.map(d => <p key={d.orderNumber}>{d.orderNumber} · {money(d.subtotal)}</p>) : <p>Chưa có đơn tạm nào trên thiết bị này.</p>}</div>}</section>; }

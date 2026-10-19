@@ -1,0 +1,9 @@
+import Link from "next/link";
+export const metadata={title:"Bốn công thức pha cà phê"};
+const recipes=[
+ {id:"phin",name:"Phin đen",meta:"18 g cà phê · 100 ml nước · 4–5 phút",steps:["Tráng nóng phin. Cho cà phê xay pha phin vào, dàn đều và đặt nắp gài nhẹ.","Rót 20 ml nước nóng, chờ 30–40 giây. Thêm 80 ml còn lại, chờ cà phê chảy hết."],product:"power-focus"},
+ {id:"milk",name:"Cà phê sữa đá",meta:"Một phần phin đen · 30 ml sữa đặc · đá",steps:["Pha một phần phin đen theo công thức bên trên.","Khuấy với sữa đặc, thêm đá. Điều chỉnh lượng sữa theo gu."],product:"power-focus"},
+ {id:"cold-brew",name:"Cold brew",meta:"50 g cà phê · 500 ml nước · ủ lạnh 16–20 giờ",steps:["Cho cà phê xay thô và nước vào bình sạch, khuấy nhẹ rồi đậy kín.","Ủ trong ngăn mát, lọc bỏ bã. Thưởng thức với đá, thêm nước nếu muốn nhẹ hơn."],product:"morning-light"},
+ {id:"pour-over",name:"Pour-over",meta:"15 g cà phê · 250 ml nước · 2,5–3,5 phút",steps:["Tráng giấy lọc, thêm cà phê xay vừa. Rót 30 ml nước nóng, chờ 30 giây.","Rót chậm phần nước còn lại thành từng nhịp đến đủ 250 ml."],product:"evening-wind"}
+];
+export default function Recipes(){return <main id="main" className="section recipes-page"><Link className="text-link" href="/brew-guide">← Nghi thức pha</Link><div className="page-intro"><p className="eyebrow">THE EVERYDAY BREW</p><h1>Bốn cách pha.<br/>Một gu của riêng bạn.</h1><p>Định lượng khởi đầu để bạn thử, rồi điều chỉnh theo dụng cụ và khẩu vị.</p></div><div className="recipe-grid">{recipes.map((r,i)=><article id={r.id} className="recipe" key={r.id}><p className="eyebrow">0{i+1} / BREW AT HOME</p><h2>{r.name}</h2><p className="recipe-meta">{r.meta}</p><ol>{r.steps.map(s=><li key={s}>{s}</li>)}</ol><Link className="text-link" href={`/shop/${r.product}`}>Cà phê gợi ý ↗</Link></article>)}</div></main>}
