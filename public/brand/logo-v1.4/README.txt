@@ -1,0 +1,1 @@
+Official After Bloom v1.4 SVG masters, approved 2026-10-21. Source: 01-Brand/03-Logo/Vector-v1.4. Website Brand.tsx preserves vector geometry and uses a live Montserrat tagline per owner request. Lifestyle raster imagery predates v1.4 and requires a separate artwork pass; do not treat embedded AI logos as master artwork.

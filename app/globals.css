@@ -3,7 +3,7 @@
   --background:#F8F7F3;
   --foreground:#222;
   --brand:#134E4A;
-  --muted:#41645f;
+  --muted:#2D6A63;
   --panel:#fffefa;
   --brand-soft:#eeeee7;
   --line:#D8D4CC;
@@ -1453,7 +1453,7 @@ html { scroll-padding-top: 164px; }
   .purchase-row .button { flex-basis: 100%; }
 }
 
-/* Approved original logo lockup: preserve symbol, lettering and clear spacing. */
+/* Official v1.4 vector lockup; retain approved geometry and live tagline. */
 .brand-artwork { display: block; width: 195px; height: auto; }
 .footer-bottom .brand-artwork { width: 180px; }
 @media (max-width: 900px) {
@@ -1472,7 +1472,7 @@ html { scroll-padding-top: 164px; }
 .pack-photo { position: relative; width: 100%; aspect-ratio: 2 / 3; isolation: isolate; overflow: hidden; }
 .product-visual { aspect-ratio: 2 / 3; }
 .product-visual .pack-photo-base,.detail-image .pack-photo-base { display:block; width:100%; height:100%; margin:0; max-width:none; object-fit:cover; transform:none; }
-.pack-photo-brand { position:absolute; left:40%; top:30%; width:32%; color:#173e3c; mix-blend-mode:multiply; }
+.pack-photo-brand { position:absolute; left:40%; top:30%; width:32%; color:var(--brand); mix-blend-mode:multiply; }
 .pack-photo-brand .brand-lockup { display:block; }
 .pack-photo-brand .brand-artwork { width:100%; height:auto; }
 .pack-photo-label { position:absolute; left:36.5%; top:55%; width:40.5%; height:22.4%; overflow:hidden; mix-blend-mode:multiply; transform:rotate(-.7deg); }
@@ -1532,3 +1532,7 @@ html { scroll-padding-top: 164px; }
 .guide-content .brew-invitation .eyebrow { font-size:10px; }
 
 .story-image-notes img { object-position: left center; }
+
+/* Visual guideline v1.4: readable body copy and quiet supporting colors. */
+.about-grid p, .article-body p, .product-description { color: var(--foreground); }
+.brand-artwork { overflow: hidden; }
